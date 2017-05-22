@@ -28,10 +28,11 @@ function initSortable() {
       placeholder: 'card-placeholder',
 			receive: function(event, item){
 				$.ajax({
-					url: baseUrl + "/card" + event.target.firstChild.id,
+					url: baseUrl + "/card/" + item.item[0].id,
 					method: "PUT",
 					data: {
-						bootcamp_kanban_column_id: event.target.parentElement.id
+						bootcamp_kanban_column_id: event.target.parentElement.id,
+						name: item.item[0].lastChild.textContent,
 					},
 				});
 			}
